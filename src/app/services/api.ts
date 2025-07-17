@@ -7,13 +7,16 @@ import { ApiResponse, Character } from '../models/character';
   providedIn: 'root'
 })
 export class Api {
-  private readonly API_URL = ''; 
+  private readonly API_URL = 'https://rickandmortyapi.com/api/character';
+  
+  private readonly http = inject(HttpClient);
 
-  private charactersSignal: any; // Define esto como una señal<Character[]>
+  private charactersSignal = signal<Character[]>([]); // Define esto como una señal<Character[]>
 
-  public readonly characters: any; // Define esto como una señal de solo lectura
+  public readonly characters = this.charactersSignal.asReadonly; // Define esto como una señal de solo lectura
 
   getCharacters(): Observable<ApiResponse> {
+    
     throw new Error('Método no implementado');
   }
 
