@@ -14,7 +14,7 @@ export class Api {
 
   private charactersSignal = signal<Character[]>([]); // Define esto como una señal<Character[]>
 
-  public readonly characters = this.charactersSignal.asReadonly; // Define esto como una señal de solo lectura
+  public readonly characters = this.charactersSignal.asReadonly(); // Define esto como una señal de solo lectura
 
   getCharacters(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.API_URL).pipe(
